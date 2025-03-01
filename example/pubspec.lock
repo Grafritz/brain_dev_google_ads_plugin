@@ -74,7 +74,7 @@ packages:
     source: hosted
     version: "4.1.3"
   brain_dev_business:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: brain_dev_business
       sha256: c3201278653528f8ead76beadd0a573c686195b776232c77302b50791ee27427
@@ -89,7 +89,7 @@ packages:
     source: path
     version: "1.0.0"
   brain_dev_tools:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: brain_dev_tools
       sha256: "0023c02ce46631d74aa4b2eb292aaf195a02178403492b78c507d76f8be25a37"
