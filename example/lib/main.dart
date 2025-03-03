@@ -1,8 +1,9 @@
 import 'package:brain_dev_business/config/dependencies_tools.dart';
+import 'package:brain_dev_google_ads/controllers/admob_controller.dart';
 import 'package:brain_dev_google_ads/variables_instance.dart';
 import 'package:brain_dev_google_ads_example/my_app_config.dart';
 import 'package:brain_dev_tools/I10n/l10n.dart';
-import 'package:brain_dev_tools/config/I10n/assets_locale_l10n.dart';
+// import 'package:brain_dev_tools/config/I10n/assets_locale_l10n.dart';
 import 'package:brain_dev_tools/config/app_config.dart';
 import 'package:brain_dev_tools/config/dependencies_tools.dart';
 import 'package:brain_dev_tools/controllers/localization_controller.dart';
@@ -27,7 +28,7 @@ FutureOr<void> main() async {
     MyAppConfig.setProdData();
   }
 
-  Map<String, Map<String, String>> languages = await AssetsLocaleL10n.appTranslatorWithMerge();
+  //Map<String, Map<String, String>> languages = await AssetsLocaleL10n.appTranslatorWithMerge();
   await initBrainDevToolsDependencies();
   initBusinessDependencies();
   await initBrainDevGoogleAds();
@@ -46,6 +47,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   final _brainDevGoogleAdsPlugin = BrainDevGoogleAds();
+  AdmobController admobController = Get.find<AdmobController>();
 
   @override
   void initState() {
@@ -55,6 +57,8 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
+    admobController.loadAndShowInterstitialAd();
+
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.

@@ -1,3 +1,9 @@
+
+## 1.0.5
+* Update Package...
+  brain_dev_tools: ^1.0.5
+  brain_dev_business: ^1.0.5
+
 ## 1.0.4+1
 Add function
 - bool isShowAds({required int index, int afterEveryItem=10, bool showAtZero=true})
