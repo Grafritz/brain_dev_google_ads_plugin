@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:brain_dev_google_ads/admob/constant_admob.dart';
 import 'package:brain_dev_google_ads/image_resources_ads.dart';
+import 'package:brain_dev_tools/config/app_config.dart';
 import 'package:brain_dev_tools/tools/check_platform.dart';
 import 'package:brain_dev_tools/tools/constant.dart';
 import 'package:brain_dev_tools/tools/my_launcher.dart';
@@ -21,6 +22,7 @@ class BannerAdWidget extends StatefulWidget
 class _BannerAdWidgetState extends State<BannerAdWidget> {
   BannerAd? _bannerAd;
   //bool _bannerAdIsLoaded = false;
+  static bool isShowBrainBanner = TypeSafeConversion.nullSafeBool(EnvironmentVariable.googleAds.isShowBrainBanner);
 
   Timer? _timer;
   int _count=1;
@@ -33,21 +35,26 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
 
     loadTimer();
   }
-  void loadTimer() {
-    var dateNow = TypeSafeConversion.nullSafeInt(Constant.format_yyyyMMdd.format(DateTime.now()));
-    var dateExpiration = 20250220;
-    if (dateNow <= dateExpiration && checkPlatform.isIOS ) {
-      return;
+  void loadTimer()
+  {
+    if( isShowBrainBanner ) {
+      var dateNow = TypeSafeConversion.nullSafeInt(
+          Constant.format_yyyyMMdd.format(DateTime.now()));
+      var dateExpiration = 20250220;
+      if (dateNow <= dateExpiration && checkPlatform.isIOS) {
+        return;
+      }
+      _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => loadBannerLocal());
     }
-    _timer = Timer.periodic(
-        const Duration(seconds: 1), (Timer t) => loadBannerLocal());
   }
 
   loadBannerLocal() {
-    if (AdSize.banner == widget.size) {
-      loadBannerLocal300x50();
-    } else {
-      loadBannerLocal300x250();
+    if( isShowBrainBanner ) {
+      if (AdSize.banner == widget.size) {
+        loadBannerLocal300x50();
+      } else {
+        loadBannerLocal300x250();
+      }
     }
   }
 
