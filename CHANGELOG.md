@@ -1,3 +1,21 @@
+## 1.0.4+1
+Add function
+- bool isShowAds({required int index, int afterEveryItem=10, bool showAtZero=true})
+- Widget getWidgetBanner()
+- Widget getWidgetBannerFluid()
+- Widget getWidgetBannerLargeBanner()
+- Widget getWidgetBannerMediumRectangle()
+- Widget getWidgetAdsMediumRectangle()
+- loadOnlyInterstitialAd()
+- loadAndShowInterstitialAd()
+- loadAndShowInterstitialAdQuickly()
+- showDialogRecompense()
+- showActionsDialogAds({required String title, bool isSaveAfter = false, Function? setActionFunction})
+- void setRewardAmount({required int action})
+- void setRewardAmountPlus({required int action, int amount = 0})
+- Widget widgetRewardTextView()
+- Widget widgetRewardView({isSaveAfter = false, required setActionFunction})
+
 ## 1.0.4
 * Update Package...
   brain_dev_tools: ^1.0.4

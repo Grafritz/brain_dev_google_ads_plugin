@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:brain_dev_google_ads/admob/constant_admob.dart';
+import 'package:brain_dev_google_ads/admob/widget_reward_view.dart';
+import 'package:brain_dev_google_ads/controllers/admob_controller.dart';
 import 'package:brain_dev_google_ads/image_resources_ads.dart';
 import 'package:brain_dev_tools/config/app_config.dart';
 import 'package:brain_dev_tools/tools/check_platform.dart';
@@ -8,6 +10,7 @@ import 'package:brain_dev_tools/tools/constant.dart';
 import 'package:brain_dev_tools/tools/my_launcher.dart';
 import 'package:brain_dev_tools/tools/validation/type_safe_conversion.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class BannerAdWidget extends StatefulWidget
@@ -229,29 +232,73 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   }
 }
 
-getWidgetBannerOld() {
+bool isShowAds({required int index, int afterEveryItem=10, bool showAtZero=true}) {
+  double height = MediaQuery.of(Get.context!).size.height;
+  if(showAtZero && index==0){
+    return true;
+  }
+  afterEveryItem = height>852?18:afterEveryItem;
+  return index>=afterEveryItem && index % afterEveryItem == 0 /*&& checkPlatform.isIOS*/;
+}
+
+Widget getWidgetBanner() {
   //return Container(height: 0);
-  return const Tooltip(
+  return Tooltip(
       message: 'Banner Pub',
       child: BannerAdWidget(size: AdSize.banner));
 }
-getWidgetBannerFluidOld() {
+
+Widget getWidgetBannerFluid() {
   //return Container(height: 0);
   return const Tooltip(
       message: 'Banner Pub',
       child: BannerAdWidget(size: AdSize.fluid)
   );
 }
-getWidgetBannerLargeBannerOld() {
+
+Widget getWidgetBannerLargeBanner() {
   //return Container(height: 0);
   return const Tooltip(
       message: 'Banner Pub',
       child: BannerAdWidget(size: AdSize.largeBanner)
   );
 }
-getWidgetAdsMediumRectangleOld() {
+
+Widget getWidgetBannerMediumRectangle() => getWidgetAdsMediumRectangle();
+Widget getWidgetAdsMediumRectangle() {
   //return Container(height: 0);
   return const Tooltip(
       message: 'medium Rectangle Pub',
       child: BannerAdWidget(size: AdSize.mediumRectangle));
+}
+loadOnlyInterstitialAd() {
+  Get.find<AdmobController>().loadAndShowInterstitialAd();
+}
+loadAndShowInterstitialAd(){
+  Get.find<AdmobController>().loadAndShowInterstitialAd();
+}
+loadAndShowInterstitialAdQuickly(){
+  Get.find<AdmobController>().loadAndShowInterstitialAdQuickly();
+}
+showDialogRecompense(){
+  Get.find<AdmobController>().showDialogRecompense();
+}
+showActionsDialogAds({required String title, bool isSaveAfter = false, Function? setActionFunction}){
+  Get.find<AdmobController>().showActionsDialogAds(title: title, isSaveAfter: isSaveAfter, setActionFunction: setActionFunction);
+}
+
+void setRewardAmount({required int action}) {
+  Get.find<AdmobController>().setRewardAmount(action:action);
+}
+
+void setRewardAmountPlus({required int action, int amount = 0}) {
+  Get.find<AdmobController>().setRewardAmountPlus(action:action, amount: amount);
+}
+
+Widget widgetRewardTextView() {
+  return WidgetRewardTextView();
+}
+
+Widget widgetRewardView({isSaveAfter = false, required setActionFunction}) {
+  return WidgetRewardView(isSaveAfter: isSaveAfter, setActionFunction: setActionFunction,);
 }
