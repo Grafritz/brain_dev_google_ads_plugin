@@ -1,3 +1,6 @@
+## 1.0.6+1
+* - Update Package...
+- kotlin_version 1.8.22 to 2.1.20
 ## 1.0.6
 * - Update Package...
   - brain_dev_tools: ^1.0.6
