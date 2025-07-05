@@ -1,3 +1,6 @@
+## 1.0.6+2
+* - Fix warning minor...
+
 ## 1.0.6+1
 * - Update Package...
 - kotlin_version 1.8.22 to 2.1.20

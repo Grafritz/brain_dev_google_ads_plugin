@@ -26,7 +26,7 @@ class VideoRewardDialog extends StatefulWidget {
 
 class _VideoRewardDialogState extends State<VideoRewardDialog> {
   //region [ ATTRIBUTS ]
-  bool _isBrightnessDark = false;
+  bool isBrightnessDark = false;
   Color _color = Colors.deepOrange;
   String _title = '';
 
@@ -53,7 +53,7 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
     initData();
   }
 
-  initData() async {
+  Future<void> initData() async {
     try {
       _color = widget.color;
       _title = widget.title;
@@ -125,7 +125,7 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
                     _title,
                     style: TextStyle(
                         color: ToolsWidget().getColor(
-                            color: _color, isDark: _isBrightnessDark)),
+                            color: _color, isDark: isBrightnessDark)),
                   ),
                   const SizedBox(width: 10.0),
                   Expanded(
@@ -418,7 +418,7 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
 
   //endregion
 
-  showDialogRecompense() {
+  Future showDialogRecompense() {
     return showDialog(
         context: context,
         barrierDismissible: true,
@@ -456,11 +456,11 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
         });
   }
 
-  setShowProgressBarRewarded({bool show = true}) {
+  void setShowProgressBarRewarded({bool show = true}) {
     setState(() => _showProgressBarRewarded = show);
   }
 
-  setShowProgressBarRewardedInterstitial({bool show = true}) {
+  void setShowProgressBarRewardedInterstitial({bool show = true}) {
     setState(() => _showProgressBarRewardedInterstitial = show);
   }
 }
