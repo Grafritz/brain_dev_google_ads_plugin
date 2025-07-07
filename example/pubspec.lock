@@ -77,25 +77,25 @@ packages:
     dependency: "direct main"
     description:
       name: brain_dev_business
-      sha256: "3c22bf870577fbcf1509cb5d32270c5b76ed1d6987d3edd07e381f851710076c"
+      sha256: "21bdc29ac79b6d053b5a5e3dd5291066055a261fb87b5c2131fb129ee2605be7"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.6"
+    version: "1.0.8"
   brain_dev_google_ads:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.0.6+2"
+    version: "1.0.8"
   brain_dev_tools:
     dependency: "direct main"
     description:
       name: brain_dev_tools
-      sha256: "76b07cd1ca0d6cae4b57ffb021b877b664deaf6e07db859b0c4d9d4e1bbcb70d"
+      sha256: c0656de61de8ce5414b10c0f5f3e88aab033674ec468af0273e6d3d9ac1e4809
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.6"
+    version: "1.0.8"
   cached_network_image:
     dependency: transitive
     description:

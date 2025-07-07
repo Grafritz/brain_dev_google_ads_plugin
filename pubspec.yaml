@@ -1,6 +1,6 @@
 name: brain_dev_google_ads
 description: "A Flutter project to manage Google Ads mobile."
-version: 1.0.7
+version: 1.0.8
 homepage: https://github.com/Grafritz/brain_dev_google_ads_plugin.git
 
 #  dart pub publish --dry-run   #// Vérifier avant chaque nouvelle version
@@ -23,10 +23,10 @@ dependencies:
   google_mobile_ads: ^6.0.0
 
   # clear && flutter clean && rm -rf ~/.pub-cache/git && flutter pub get
-  brain_dev_tools: ^1.0.6
+  brain_dev_tools: ^1.0.8
     #path: /Users/jeanfritzduverseau/_Travaux/Projects/Flutter_Plugins/brain_dev_tools_plugin
 
-  brain_dev_business: ^1.0.6
+  brain_dev_business: ^1.0.8
     #path: /Users/jeanfritzduverseau/_Travaux/Projects/Flutter_Plugins/brain_dev_business_plugin
 
 
