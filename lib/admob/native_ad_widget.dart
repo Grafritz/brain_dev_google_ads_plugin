@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:brain_dev_google_ads/admob/constant_admob.dart';
-import 'package:brain_dev_tools/tools/check_platform.dart';
-import 'package:brain_dev_tools/tools/tools_log.dart';
+import 'package:brain_dev_google_ads/src/ads_support.dart';
+import 'package:brain_dev_core/log/brain_dev_log.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -53,7 +53,7 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     try {
-      if (checkPlatform.isMobile) {
+      if (AdsPlatform.isMobile) {
         // Create the ad objects and load ads.
         _nativeAd = NativeAd(
             adUnitId: getBannerAdUnitId(),
@@ -82,7 +82,7 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
   @override
   Widget build(BuildContext context) {
     //return Container(height: 0);
-    if ( CheckPlatform().isMobile ) {
+    if ( AdsPlatform.isMobile ) {
       return FutureBuilder<NativeAd>(
         future: nativeAdCompleter.future,
         builder: (BuildContext context, AsyncSnapshot<NativeAd> snapshot) {

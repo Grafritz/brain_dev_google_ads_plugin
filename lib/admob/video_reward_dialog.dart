@@ -1,11 +1,9 @@
 import 'package:brain_dev_google_ads/controllers/admob_controller.dart';
-import 'package:brain_dev_tools/tools/enum/enum.dart';
 import 'package:brain_dev_google_ads/admob/constant_admob.dart';
-import 'package:brain_dev_tools/tools/check_platform.dart';
-import 'package:brain_dev_tools/tools/my_elevated_button.dart';
-import 'package:brain_dev_tools/tools/tools_log.dart';
-import 'package:brain_dev_tools/tools/tools_widget.dart';
-import 'package:brain_dev_tools/tools/utils/image_icon_resources.dart';
+import 'package:brain_dev_google_ads/src/ads_support.dart';
+import 'package:brain_dev_google_ads/src/ads_types.dart';
+import 'package:brain_dev_core/log/brain_dev_log.dart';
+import 'package:brain_dev_google_ads/image_resources_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -124,7 +122,7 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
                   Text(
                     _title,
                     style: TextStyle(
-                        color: ToolsWidget().getColor(
+                        color: adsColorForLightTheme(
                             color: _color, isDark: isBrightnessDark)),
                   ),
                   const SizedBox(width: 10.0),
@@ -156,16 +154,16 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
                         const SizedBox(width: 10.0),
                         Text('${'msg_Reward_earned'.tr} : ',
                             textAlign: TextAlign.center,
-                            style: ToolsWidget().styleReward(fontSize: 14)),
+                            style: adsRewardStyle(fontSize: 14)),
                         Image.asset(
-                          ImageIconResources.assetsCoinStarPath,
+                          ImageResourcesAds.assetsCoinStarPath,
                           width: 20,
                         ),
                         Text('${admobCtr.recompenseAds}',
                             textAlign: TextAlign.center,
-                            style: ToolsWidget().styleReward(fontSize: 14)),
+                            style: adsRewardStyle(fontSize: 14)),
                         // Text('$_recompenseAds', textAlign: TextAlign.center,
-                        //     style: ToolsWidget().styleReward(context, isDark:_isBrightnessDark ) ),
+                        //     style: adsRewardStyle(context, isDark:_isBrightnessDark ) ),
                         const SizedBox(width: 10.0),
                         Expanded(
                             child: Divider(
@@ -189,7 +187,7 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
                   : () {
                       showRewardedInterstitialAd();
                     },
-              style: elevatedButtonNormal(backgroundColor: Colors.teal),
+              style: adsButtonStyle(backgroundColor: Colors.teal),
               icon: (_showProgressBarRewardedInterstitial)
                   ? const CircularProgressIndicator(
                       backgroundColor: Colors.white,
@@ -212,7 +210,7 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
                   : () {
                       showRewardedAd();
                     },
-              style: elevatedButtonNormal(backgroundColor: Colors.blueGrey),
+              style: adsButtonStyle(backgroundColor: Colors.blueGrey),
               icon: (_showProgressBarRewarded)
                   ? const CircularProgressIndicator(
                       backgroundColor: Colors.white,
@@ -241,7 +239,7 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
 
   //region [ Interstitial Ad ]
   void _createInterstitialAd() {
-    if (CheckPlatform().isMobile) {
+    if (AdsPlatform.isMobile) {
       InterstitialAd.load(
           adUnitId: getInterstitielAdUnitId(),
           request: request,
@@ -434,7 +432,7 @@ class _VideoRewardDialogState extends State<VideoRewardDialog> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Image.asset(
-                      ImageIconResources.assetsCoinPath,
+                      ImageResourcesAds.assetsCoinPath,
                       width: 300,
                     ),
                     Container(

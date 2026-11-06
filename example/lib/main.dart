@@ -24,16 +24,16 @@ import 'package:brain_dev_google_ads/brain_dev_google_ads.dart';
 FutureOr<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  if( EnvironmentVariable.urlApiServer.isEmpty){
+  if( EnvironmentVariable.urlMiddlewareServer.isEmpty){
     MyAppConfig.setProdData();
   }
 
   //Map<String, Map<String, String>> languages = await AssetsLocaleL10n.appTranslatorWithMerge();
   await initBrainDevToolsDependencies();
   initBusinessDependencies();
-  await initBrainDevGoogleAds();
+  await initBrainDevGoogleAds(config: const AdsConfig());
 
-  initBrainDevGoogleAds();
+  initBrainDevGoogleAds(config: const AdsConfig());
   runApp(const MyApp());
 }
 

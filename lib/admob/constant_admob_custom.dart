@@ -1,30 +1,30 @@
 import 'dart:io';
 
-import 'package:brain_dev_tools/config/app_config.dart';
-import 'package:brain_dev_tools/tools/validation/type_safe_conversion.dart';
+import 'package:brain_dev_google_ads/src/ads_config.dart';
+import 'package:brain_dev_google_ads/src/ads_support.dart';
 
 class AdmobCustom
 {
-  GoogleAdsModel get googleAds => EnvironmentVariable.googleAds;
+  AdsCustomUnits get googleAds => BrainDevAdsConfig.current.customUnits;
 //region [ AdMob Android et iOS ]
 //region [ AdMob Android ]
-  static String appIdAdMobAndroid = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.appIdAdMobAndroid);
-  static String appOpenAdMobAndroid = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.appOpenAdMobAndroid);
-  static String bannerAdMobAndroid = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.bannerAdMobAndroid);
-  static String interstitielAdMobAndroid = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.interstitielAdMobAndroid);
-  static String rewardedAdMobAndroid = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.rewardedAdMobAndroid);
-  static String rewardedInterstitielAdMobAndroid = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.rewardedInterstitielAdMobAndroid);
-  static String natifAdvancedAdMobAndroid = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.natifAdvancedAdMobAndroid);
+  static String appIdAdMobAndroid = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.appIdAdMobAndroid);
+  static String appOpenAdMobAndroid = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.appOpenAdMobAndroid);
+  static String bannerAdMobAndroid = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.bannerAdMobAndroid);
+  static String interstitielAdMobAndroid = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.interstitielAdMobAndroid);
+  static String rewardedAdMobAndroid = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.rewardedAdMobAndroid);
+  static String rewardedInterstitielAdMobAndroid = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.rewardedInterstitielAdMobAndroid);
+  static String natifAdvancedAdMobAndroid = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.natifAdvancedAdMobAndroid);
 //endregion
 
 //region [ AdMob iOS ]
-  static String appIdAdMobIOS = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.appIdAdMobIOS);
-  static String appOpenAdMobIOS = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.appOpenAdMobIOS);
-  static String bannerAdMobIOS = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.bannerAdMobIOS);
-  static String interstitielAdMobIOS = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.interstitielAdMobIOS);
-  static String rewardedAdMobIOS = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.rewardedAdMobIOS);
-  static String rewardedInterstitielAdMobIOS = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.rewardedInterstitielAdMobIOS);
-  static String natifAdvancedAdMobIOS = TypeSafeConversion.nullSafeString(EnvironmentVariable.googleAds.natifAdvancedAdMobIOS);
+  static String appIdAdMobIOS = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.appIdAdMobIOS);
+  static String appOpenAdMobIOS = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.appOpenAdMobIOS);
+  static String bannerAdMobIOS = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.bannerAdMobIOS);
+  static String interstitielAdMobIOS = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.interstitielAdMobIOS);
+  static String rewardedAdMobIOS = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.rewardedAdMobIOS);
+  static String rewardedInterstitielAdMobIOS = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.rewardedInterstitielAdMobIOS);
+  static String natifAdvancedAdMobIOS = AdsConversions.nullSafeString(BrainDevAdsConfig.current.customUnits.natifAdvancedAdMobIOS);
 //endregion
 
 //region [ AdMob For Get Id For Android or iOS / in Test Or Not ]

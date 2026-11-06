@@ -5,10 +5,9 @@ import 'package:brain_dev_tools/config/app_config.dart';
 import 'package:brain_dev_tools/tools/enum/enum.dart';
 
 class MyAppConfig {
-  static String urlProductionApiServerCCG = "";
-  static String urlQAApiServerCCG = "";
-  static String urlLoginProd = '';
-  static String urlLoginQA = '';
+  static String urlDevMiddlewareServer = "http://localhost:1993/";
+  static String urlQAMiddlewareServer = "https://middleware.qa.lyricstream.app/";
+  static String urlProductionMiddlewareServer = "https://middleware.lyricstream.app/";
 
   static const String appName = "Dictionnaire Medical";
   static const String assetsPathLanguage = '';
@@ -24,8 +23,7 @@ class MyAppConfig {
   static void setDevData() {
     SetUpEnvironment.dev(appConfig: AppConfig(
       appName: appName,
-      urlWebServer: urlQAApiServerCCG,
-      urlApiServer: urlQAApiServerCCG,
+      urlMiddlewareServer: urlDevMiddlewareServer,
       appImage: ImageModel(
           logoCircleLight: '',
           logoSquareLight: '',
@@ -37,7 +35,6 @@ class MyAppConfig {
       isConnectionRequired: isConnectionRequired,
       isBibleActive: isBibleActive,
       templateLogin: templateLogin,
-      endPointApi: EndPointApiModel(),
       googleAds: GoogleAdsModel(),
       appLanguages: appLanguages,
       assetsPathLanguage: assetsPathLanguage,
@@ -49,8 +46,7 @@ class MyAppConfig {
   static void setQAData() {
     SetUpEnvironment.qa(appConfig: AppConfig(
       appName: appName,
-      urlWebServer: urlQAApiServerCCG,
-      urlApiServer: urlQAApiServerCCG,
+      urlMiddlewareServer: urlQAMiddlewareServer,
       appImage: ImageModel(
           logoCircleLight: '',
           logoSquareLight: '',
@@ -62,7 +58,6 @@ class MyAppConfig {
       isConnectionRequired: isConnectionRequired,
       isBibleActive: isBibleActive,
       templateLogin: templateLogin,
-      endPointApi: EndPointApiModel(),
       googleAds: GoogleAdsModel(),
       appLanguages: appLanguages,
       assetsPathLanguage: assetsPathLanguage,
@@ -74,8 +69,7 @@ class MyAppConfig {
   static void setProdData() {
     SetUpEnvironment.prod(appConfig: AppConfig(
       appName: appName,
-      urlWebServer: urlProductionApiServerCCG,
-      urlApiServer: urlProductionApiServerCCG,
+      urlMiddlewareServer: urlProductionMiddlewareServer,
       appImage: ImageModel(
           logoCircleLight: '',
           logoSquareLight: '',
@@ -87,7 +81,6 @@ class MyAppConfig {
       isConnectionRequired: isConnectionRequired,
       isBibleActive: isBibleActive,
       templateLogin: templateLogin,
-      endPointApi: EndPointApiModel(),
       googleAds: GoogleAdsModel(),
       appLanguages: appLanguages,
       assetsPathLanguage: assetsPathLanguage,

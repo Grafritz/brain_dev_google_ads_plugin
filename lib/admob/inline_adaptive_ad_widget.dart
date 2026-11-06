@@ -1,5 +1,5 @@
 import 'package:brain_dev_google_ads/admob/constant_admob.dart';
-import 'package:brain_dev_tools/tools/tools_log.dart';
+import 'package:brain_dev_core/log/brain_dev_log.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 

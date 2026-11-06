@@ -1,10 +1,10 @@
 import 'package:brain_dev_google_ads/admob/constant_admob.dart';
-import 'package:brain_dev_tools/tools/check_platform.dart';
-import 'package:brain_dev_tools/tools/tools_log.dart';
+import 'package:brain_dev_google_ads/src/ads_support.dart';
+import 'package:brain_dev_core/log/brain_dev_log.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 mobileAdsInstanceInitialize() async {
-  if (checkPlatform.isMobile) {
+  if (AdsPlatform.isMobile) {
     MobileAds.instance.initialize();
   }
   await createAppOpenAd(showAfter: true);
@@ -13,7 +13,7 @@ mobileAdsInstanceInitialize() async {
 //region [ AppOpen App ]
 AppOpenAd? appOpenAd;
 Future createAppOpenAd({bool showAfter = false}) async {
-  if (checkPlatform.isMobile) {
+  if (AdsPlatform.isMobile) {
     await AppOpenAd.load(
       adUnitId: getAppOpenAdUnitId(),
       request: AdRequest(),

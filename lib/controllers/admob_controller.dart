@@ -1,10 +1,8 @@
-import 'package:brain_dev_tools/I10n/localization_constants.dart';
 import 'package:brain_dev_google_ads/admob/constant_admob.dart';
 import 'package:brain_dev_google_ads/admob/video_reward_dialog.dart';
-import 'package:brain_dev_tools/tools/check_platform.dart';
-import 'package:brain_dev_tools/tools/enum/enum.dart';
-import 'package:brain_dev_tools/tools/tools_log.dart';
-import 'package:brain_dev_tools/tools/utils/image_icon_resources.dart';
+import 'package:brain_dev_google_ads/src/ads_support.dart';
+import 'package:brain_dev_core/log/brain_dev_log.dart';
+import 'package:brain_dev_google_ads/image_resources_ads.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -58,7 +56,7 @@ class AdmobController extends GetxController implements GetxService
 
   //region [ AppOpen App ]
   Future createAppOpenAd({bool showAfter = false}) async {
-    if (checkPlatform.isMobile) {
+    if (AdsPlatform.isMobile) {
       await AppOpenAd.load(
         adUnitId: getAppOpenAdUnitId(),
         request: const AdRequest(),
@@ -188,7 +186,7 @@ class AdmobController extends GetxController implements GetxService
   //region [ InterstitialAd ]
   Future createInterstitialAd({bool showAfter = false}) async {
     setShowProgressBar(show: true);
-    if (checkPlatform.isMobile) {
+    if (AdsPlatform.isMobile) {
       await InterstitialAd.load(
           adUnitId: getInterstitielAdUnitId(),
           request: request,
@@ -218,7 +216,7 @@ class AdmobController extends GetxController implements GetxService
   }
 
   void showInterstitialAd() async {
-    if (checkPlatform.isMobile) {
+    if (AdsPlatform.isMobile) {
       if (_interstitialAd == null) {
         logCat('Warning: attempt to show interstitial before loaded.');
         //createInterstitialAd(showAfter: true);
@@ -246,7 +244,7 @@ class AdmobController extends GetxController implements GetxService
 
   //region [ RewardedVideoAd ]
   void createRewardedAd() {
-    if (checkPlatform.isMobile) {
+    if (AdsPlatform.isMobile) {
       setShowProgressBar(show: true);
       RewardedAd.load(
           adUnitId: getRewardedVideoAdUnitId(),
@@ -272,7 +270,7 @@ class AdmobController extends GetxController implements GetxService
   }
 
   showRewardedVideoAd() {
-    if (checkPlatform.isMobile) {
+    if (AdsPlatform.isMobile) {
       //setShowProgressBar(show: true);
       if (_rewardedAd == null) {
         logCat('Warning: attempt to show rewarded before loaded.');
@@ -322,7 +320,7 @@ class AdmobController extends GetxController implements GetxService
 
 //region [  ]
   void createRewardedInterstitialAd() {
-    if (checkPlatform.isMobile) {
+    if (AdsPlatform.isMobile) {
       RewardedInterstitialAd.load(
           adUnitId: getRewardedInterstitialAdUnitId(),
           request: request,
@@ -347,7 +345,7 @@ class AdmobController extends GetxController implements GetxService
   }
 
   void showRewardedInterstitialAd() {
-    if (CheckPlatform().isMobile) {
+    if (AdsPlatform.isMobile) {
       if (_rewardedInterstitialAd == null) {
         logCat('Warning: attempt to show rewarded interstitial before loaded.');
         return;
@@ -429,7 +427,7 @@ class AdmobController extends GetxController implements GetxService
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Image.asset(
-                      ImageIconResources.assetsCoinPath,
+                      ImageResourcesAds.assetsCoinPath,
                       width: 300,
                     ),
                     Container(
@@ -440,7 +438,7 @@ class AdmobController extends GetxController implements GetxService
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 8),
                         child: Text(
-                          '${tr('msg_you_receive_reward')}',
+                          '${'msg_you_receive_reward'.tr}',
                           style: const TextStyle(color: Colors.teal),
                         ))
                   ],
@@ -476,33 +474,14 @@ class AdmobController extends GetxController implements GetxService
   showActionsDialogAds2(
       {required String title,
         bool isSaveAfter = false,
-        SetActionFunction? setActionFunction}) async
+        Object? setActionFunction}) async
   {
+    // Les actions à lancer après la récompense (enregistrer un chant, un groupe, envoyer un partage…) sont propres à
+    // l'application : elles n'étaient déjà pas exécutées ici (code mis en commentaire). [setActionFunction] est conservé
+    // pour la compatibilité des appels.
     showDialog<bool>(
         context: Get.context!,
-        builder: (_) => VideoRewardDialog(color: Colors.teal, title: title))
-        .then((value) async {
-      if (isSaveAfter) {
-        int recompense = await getRecompenseAds();
-        if (recompense > 0) {
-          switch (setActionFunction) {
-            case SetActionFunction.saveChantUser:
-              //await Get.find<ChantUserController>().saveChant(isSaveOnline: true);
-              break;
-            case SetActionFunction.saveGroupeUser:
-              //await Get.find<GroupeUserController>().saveGroupe(isSaveOnline: true);
-              break;
-            case SetActionFunction.sendUserShare:
-              //await Get.find<ShareWithMeController>().sendUserShare();
-              break;
-            case SetActionFunction.backUpOnlineChantUser:
-            //await Get.find<ChantUserController>().backUpOnlineChantUser();
-              break;
-            default:
-          }
-        }
-      }
-    });
+        builder: (_) => VideoRewardDialog(color: Colors.teal, title: title));
   }
 
 }

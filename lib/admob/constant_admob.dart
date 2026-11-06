@@ -9,8 +9,7 @@ import 'package:brain_dev_google_ads/admob/constant_admob_la_bible.dart';
 import 'package:brain_dev_google_ads/admob/constant_admob_le_gout_du_chef.dart';
 import 'package:brain_dev_google_ads/admob/constant_admob_planif_max.dart';
 import 'package:brain_dev_google_ads/admob/constant_admob_lyric_evangelique.dart';
-import 'package:brain_dev_tools/config/app_config.dart';
-import 'package:brain_dev_tools/tools/enum/enum.dart';
+import 'package:brain_dev_google_ads/src/ads_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -76,33 +75,33 @@ String getAppIdAdMob() {
   if (!kReleaseMode) {
     return testAppId;
   }
-  EnumEnvironmentType env = EnvironmentVariable.environmentType;
+  AdsEnvironment env = BrainDevAdsConfig.current.environment;
   switch (env) {
-    case EnumEnvironmentType.chantchoraleetgroupe:
+    case AdsEnvironment.chantchoraleetgroupe:
       return AdmobChantChoraleEtGroupe.appIdAdMob;
 
-    case EnumEnvironmentType.chantdesperance:
+    case AdsEnvironment.chantdesperance:
       return AdmobChantDesperance.appIdAdMob;
 
-    case EnumEnvironmentType.chantdesperancelegacy:
+    case AdsEnvironment.chantdesperancelegacy:
       return AdmobChantDesperanceLegacy.appIdAdMob;
 
-    case EnumEnvironmentType.lyricevangelique:
+    case AdsEnvironment.lyricevangelique:
       return AdmobLyricEvangelique.appIdAdMob;
 
-    case EnumEnvironmentType.chantlyric:
+    case AdsEnvironment.chantlyric:
       return AdmobChantLyric.appIdAdMob;
 
-    case EnumEnvironmentType.labible:
+    case AdsEnvironment.labible:
       return AdmobLaBible.appIdAdMob;
 
-    case EnumEnvironmentType.legoutduchef:
+    case AdsEnvironment.legoutduchef:
       return AdmobLeGoutDuChef.appIdAdMob;
 
-    case EnumEnvironmentType.planifMax:
+    case AdsEnvironment.planifMax:
       return AdmobPlanifMax.appIdAdMob;
 
-    case EnumEnvironmentType.custom:
+    case AdsEnvironment.custom:
       return AdmobPlanifMax.appIdAdMob;
 
     // default:
@@ -115,33 +114,33 @@ String getAppOpenAdUnitId() {
   if (!kReleaseMode) {
     return appOpenAdTestAdUnitId;
   }
-  EnumEnvironmentType env = EnvironmentVariable.environmentType;
+  AdsEnvironment env = BrainDevAdsConfig.current.environment;
   switch (env) {
-    case EnumEnvironmentType.chantchoraleetgroupe:
+    case AdsEnvironment.chantchoraleetgroupe:
       return AdmobChantChoraleEtGroupe.appOpenAdUnitId;
 
-    case EnumEnvironmentType.chantdesperance:
+    case AdsEnvironment.chantdesperance:
       return AdmobChantDesperance.appOpenAdUnitId;
 
-    case EnumEnvironmentType.chantdesperancelegacy:
+    case AdsEnvironment.chantdesperancelegacy:
       return AdmobChantDesperanceLegacy.appOpenAdUnitId;
 
-    case EnumEnvironmentType.lyricevangelique:
+    case AdsEnvironment.lyricevangelique:
       return AdmobLyricEvangelique.appOpenAdUnitId;
 
-    case EnumEnvironmentType.chantlyric:
+    case AdsEnvironment.chantlyric:
       return AdmobChantLyric.appOpenAdUnitId;
 
-    case EnumEnvironmentType.labible:
+    case AdsEnvironment.labible:
       return AdmobLaBible.appOpenAdUnitId;
 
-    case EnumEnvironmentType.legoutduchef:
+    case AdsEnvironment.legoutduchef:
       return AdmobLeGoutDuChef.appOpenAdUnitId;
 
-    case EnumEnvironmentType.planifMax:
+    case AdsEnvironment.planifMax:
       return AdmobPlanifMax.appOpenAdUnitId;
 
-    case EnumEnvironmentType.custom:
+    case AdsEnvironment.custom:
       return AdmobCustom.appOpenAdUnitId;
 
     // default:
@@ -155,33 +154,33 @@ String getBannerAdUnitId() {
   if (!kReleaseMode) {
     return bannerTestAdUnitId;
   }
-  EnumEnvironmentType env = EnvironmentVariable.environmentType;
+  AdsEnvironment env = BrainDevAdsConfig.current.environment;
   switch (env) {
-    case EnumEnvironmentType.chantchoraleetgroupe:
+    case AdsEnvironment.chantchoraleetgroupe:
       return AdmobChantChoraleEtGroupe.bannerAdUnitId;
 
-    case EnumEnvironmentType.chantdesperance:
+    case AdsEnvironment.chantdesperance:
       return AdmobChantDesperance.bannerAdUnitId;
 
-    case EnumEnvironmentType.chantdesperancelegacy:
+    case AdsEnvironment.chantdesperancelegacy:
       return AdmobChantDesperanceLegacy.bannerAdUnitId;
 
-    case EnumEnvironmentType.lyricevangelique:
+    case AdsEnvironment.lyricevangelique:
       return AdmobLyricEvangelique.bannerAdUnitId;
 
-    case EnumEnvironmentType.chantlyric:
+    case AdsEnvironment.chantlyric:
       return AdmobChantLyric.bannerAdUnitId;
 
-    case EnumEnvironmentType.labible:
+    case AdsEnvironment.labible:
       return AdmobLaBible.bannerAdUnitId;
 
-    case EnumEnvironmentType.legoutduchef:
+    case AdsEnvironment.legoutduchef:
       return AdmobLeGoutDuChef.bannerAdUnitId;
 
-    case EnumEnvironmentType.planifMax:
+    case AdsEnvironment.planifMax:
       return AdmobPlanifMax.bannerAdUnitId;
 
-    case EnumEnvironmentType.custom:
+    case AdsEnvironment.custom:
       return AdmobCustom.bannerAdUnitId;
 
     // default:
@@ -194,33 +193,33 @@ String getInterstitielAdUnitId() {
   if (!kReleaseMode) {
     return interstitialAdTestAdUnitId;
   }
-  EnumEnvironmentType env = EnvironmentVariable.environmentType;
+  AdsEnvironment env = BrainDevAdsConfig.current.environment;
   switch (env) {
-    case EnumEnvironmentType.chantchoraleetgroupe:
+    case AdsEnvironment.chantchoraleetgroupe:
       return AdmobChantChoraleEtGroupe.interstitielAdUnitId;
 
-    case EnumEnvironmentType.chantdesperance:
+    case AdsEnvironment.chantdesperance:
       return AdmobChantDesperance.interstitielAdUnitId;
 
-    case EnumEnvironmentType.chantdesperancelegacy:
+    case AdsEnvironment.chantdesperancelegacy:
       return AdmobChantDesperanceLegacy.interstitielAdUnitId;
 
-    case EnumEnvironmentType.lyricevangelique:
+    case AdsEnvironment.lyricevangelique:
       return AdmobLyricEvangelique.interstitielAdUnitId;
 
-    case EnumEnvironmentType.chantlyric:
+    case AdsEnvironment.chantlyric:
       return AdmobChantLyric.interstitielAdUnitId;
 
-    case EnumEnvironmentType.labible:
+    case AdsEnvironment.labible:
       return AdmobLaBible.interstitielAdUnitId;
 
-    case EnumEnvironmentType.legoutduchef:
+    case AdsEnvironment.legoutduchef:
       return AdmobLeGoutDuChef.interstitielAdUnitId;
 
-    case EnumEnvironmentType.planifMax:
+    case AdsEnvironment.planifMax:
       return AdmobPlanifMax.interstitielAdUnitId;
 
-    case EnumEnvironmentType.custom:
+    case AdsEnvironment.custom:
       return AdmobCustom.interstitielAdUnitId;
 
     // default:
@@ -233,33 +232,33 @@ String getRewardedInterstitialAdUnitId() {
   if (!kReleaseMode) {
     return rewardedInterstitialAdTestAdUnitId;
   }
-  EnumEnvironmentType env = EnvironmentVariable.environmentType;
+  AdsEnvironment env = BrainDevAdsConfig.current.environment;
   switch (env) {
-    case EnumEnvironmentType.chantchoraleetgroupe:
+    case AdsEnvironment.chantchoraleetgroupe:
       return AdmobChantChoraleEtGroupe.rewardedInterstitialAdUnitId;
 
-    case EnumEnvironmentType.chantdesperance:
+    case AdsEnvironment.chantdesperance:
       return AdmobChantDesperance.rewardedInterstitialAdUnitId;
 
-    case EnumEnvironmentType.chantdesperancelegacy:
+    case AdsEnvironment.chantdesperancelegacy:
       return AdmobChantDesperanceLegacy.rewardedInterstitialAdUnitId;
 
-    case EnumEnvironmentType.lyricevangelique:
+    case AdsEnvironment.lyricevangelique:
       return AdmobLyricEvangelique.rewardedInterstitialAdUnitId;
 
-    case EnumEnvironmentType.chantlyric:
+    case AdsEnvironment.chantlyric:
       return AdmobChantLyric.rewardedInterstitialAdUnitId;
 
-    case EnumEnvironmentType.labible:
+    case AdsEnvironment.labible:
       return AdmobLaBible.rewardedInterstitialAdUnitId;
 
-    case EnumEnvironmentType.legoutduchef:
+    case AdsEnvironment.legoutduchef:
       return AdmobLeGoutDuChef.rewardedInterstitialAdUnitId;
 
-    case EnumEnvironmentType.planifMax:
+    case AdsEnvironment.planifMax:
       return AdmobPlanifMax.rewardedInterstitialAdUnitId;
 
-    case EnumEnvironmentType.custom:
+    case AdsEnvironment.custom:
       return AdmobCustom.rewardedInterstitialAdUnitId;
 
     // default:
@@ -272,33 +271,33 @@ String getRewardedVideoAdUnitId() {
   if (!kReleaseMode) {
     return rewardedVideoAdTestAdUnitId;
   }
-  EnumEnvironmentType env = EnvironmentVariable.environmentType;
+  AdsEnvironment env = BrainDevAdsConfig.current.environment;
   switch (env) {
-    case EnumEnvironmentType.chantchoraleetgroupe:
+    case AdsEnvironment.chantchoraleetgroupe:
       return AdmobChantChoraleEtGroupe.rewardedVideoAdUnitId;
 
-    case EnumEnvironmentType.chantdesperance:
+    case AdsEnvironment.chantdesperance:
       return AdmobChantDesperance.rewardedVideoAdUnitId;
 
-    case EnumEnvironmentType.chantdesperancelegacy:
+    case AdsEnvironment.chantdesperancelegacy:
       return AdmobChantDesperanceLegacy.rewardedVideoAdUnitId;
 
-    case EnumEnvironmentType.lyricevangelique:
+    case AdsEnvironment.lyricevangelique:
       return AdmobLyricEvangelique.rewardedVideoAdUnitId;
 
-    case EnumEnvironmentType.chantlyric:
+    case AdsEnvironment.chantlyric:
       return AdmobChantLyric.rewardedVideoAdUnitId;
 
-    case EnumEnvironmentType.labible:
+    case AdsEnvironment.labible:
       return AdmobLaBible.rewardedVideoAdUnitId;
 
-    case EnumEnvironmentType.legoutduchef:
+    case AdsEnvironment.legoutduchef:
       return AdmobLeGoutDuChef.rewardedVideoAdUnitId;
 
-    case EnumEnvironmentType.planifMax:
+    case AdsEnvironment.planifMax:
       return AdmobPlanifMax.rewardedVideoAdUnitId;
 
-    case EnumEnvironmentType.custom:
+    case AdsEnvironment.custom:
       return AdmobCustom.rewardedVideoAdUnitId;
 
     // default:
@@ -311,33 +310,33 @@ String getNatifAdvancedAdUnitId() {
   if (!kReleaseMode) {
     return nativeAdTestAdUnitId;
   }
-  EnumEnvironmentType env = EnvironmentVariable.environmentType;
+  AdsEnvironment env = BrainDevAdsConfig.current.environment;
   switch (env) {
-    case EnumEnvironmentType.chantchoraleetgroupe:
+    case AdsEnvironment.chantchoraleetgroupe:
       return AdmobChantChoraleEtGroupe.natifAdvancedAdUnitId;
 
-    case EnumEnvironmentType.chantdesperance:
+    case AdsEnvironment.chantdesperance:
       return AdmobChantDesperance.natifAdvancedAdUnitId;
 
-    case EnumEnvironmentType.chantdesperancelegacy:
+    case AdsEnvironment.chantdesperancelegacy:
       return AdmobChantDesperanceLegacy.natifAdvancedAdUnitId;
 
-    case EnumEnvironmentType.lyricevangelique:
+    case AdsEnvironment.lyricevangelique:
       return AdmobLyricEvangelique.natifAdvancedAdUnitId;
 
-    case EnumEnvironmentType.chantlyric:
+    case AdsEnvironment.chantlyric:
       return AdmobChantLyric.natifAdvancedAdUnitId;
 
-    case EnumEnvironmentType.labible:
+    case AdsEnvironment.labible:
       return AdmobLaBible.natifAdvancedAdUnitId;
 
-    case EnumEnvironmentType.legoutduchef:
+    case AdsEnvironment.legoutduchef:
       return AdmobLeGoutDuChef.natifAdvancedAdUnitId;
 
-    case EnumEnvironmentType.planifMax:
+    case AdsEnvironment.planifMax:
       return AdmobPlanifMax.natifAdvancedAdUnitId;
 
-    case EnumEnvironmentType.custom:
+    case AdsEnvironment.custom:
       return AdmobCustom.natifAdvancedAdUnitId;
 
     // default:

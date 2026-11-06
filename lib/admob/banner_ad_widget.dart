@@ -4,11 +4,8 @@ import 'package:brain_dev_google_ads/admob/constant_admob.dart';
 import 'package:brain_dev_google_ads/admob/widget_reward_view.dart';
 import 'package:brain_dev_google_ads/controllers/admob_controller.dart';
 import 'package:brain_dev_google_ads/image_resources_ads.dart';
-import 'package:brain_dev_tools/config/app_config.dart';
-import 'package:brain_dev_tools/tools/check_platform.dart';
-import 'package:brain_dev_tools/tools/constant.dart';
-import 'package:brain_dev_tools/tools/my_launcher.dart';
-import 'package:brain_dev_tools/tools/validation/type_safe_conversion.dart';
+import 'package:brain_dev_google_ads/src/ads_config.dart';
+import 'package:brain_dev_google_ads/src/ads_support.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -25,7 +22,7 @@ class BannerAdWidget extends StatefulWidget
 class _BannerAdWidgetState extends State<BannerAdWidget> {
   BannerAd? _bannerAd;
   //bool _bannerAdIsLoaded = false;
-  static bool isShowBrainBanner = TypeSafeConversion.nullSafeBool(EnvironmentVariable.googleAds.isShowBrainBanner);
+  static bool isShowBrainBanner = AdsConversions.nullSafeBool(BrainDevAdsConfig.current.isShowBrainBanner);
 
   Timer? _timer;
   int _count=1;
@@ -41,10 +38,10 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   void loadTimer()
   {
     if( isShowBrainBanner ) {
-      var dateNow = TypeSafeConversion.nullSafeInt(
-          Constant.format_yyyyMMdd.format(DateTime.now()));
+      var dateNow = AdsConversions.nullSafeInt(
+          AdsLinks.formatYyyyMMdd(DateTime.now()));
       var dateExpiration = 20250220;
-      if (dateNow <= dateExpiration && checkPlatform.isIOS) {
+      if (dateNow <= dateExpiration && AdsPlatform.isIOS) {
         return;
       }
       _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => loadBannerLocal());
@@ -69,7 +66,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
               ImageResourcesAds.assetsPath_BannerBrainDev_300x50,
             ),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteBrainDev);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteBrainDev);
             },
           ));
     }
@@ -77,7 +74,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       setState(() => _widgetAddLocal = InkWell(
             child: Image.asset(ImageResourcesAds.assetsPath_BannerCCG_300x50),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteChantCCG);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteChantCCG);
             },
           ));
     }
@@ -85,7 +82,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       setState(() => _widgetAddLocal = InkWell(
             child: Image.asset(ImageResourcesAds.assetsPath_BannerRezo509_300x50),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteRezo509);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteRezo509);
             },
           ));
     }
@@ -93,7 +90,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       setState(() => _widgetAddLocal = InkWell(
             child: Image.asset(ImageResourcesAds.assetsPath_BannerLaBible_300x50),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteChantCCG);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteChantCCG);
             },
           ));
     }
@@ -101,7 +98,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       setState(() => _widgetAddLocal = InkWell(
             child: Image.asset(ImageResourcesAds.assetsPath_BannerRezo509_320x50),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteRezo509);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteRezo509);
             },
           ));
     }
@@ -117,7 +114,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       setState(() => _widgetAddLocal = InkWell(
             child: Image.asset(ImageResourcesAds.assetsPath_BannerBraindev_300x250),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteBrainDev);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteBrainDev);
             },
           ));
     }
@@ -125,7 +122,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       setState(() => _widgetAddLocal = InkWell(
             child: Image.asset(ImageResourcesAds.assetsPath_BannerLaBible_300x250),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteLaBible);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteLaBible);
             },
           ));
     }
@@ -133,7 +130,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       setState(() => _widgetAddLocal = InkWell(
             child: Image.asset(ImageResourcesAds.assetsPath_BannerCCG_300x250_2),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteChantCCG);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteChantCCG);
             },
           ));
     }
@@ -141,7 +138,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       setState(() => _widgetAddLocal = InkWell(
             child: Image.asset(ImageResourcesAds.assetsPath_BannerCCG_300x250_1),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteChantCCG);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteChantCCG);
             },
           ));
     }
@@ -149,7 +146,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       setState(() => _widgetAddLocal = InkWell(
             child: Image.asset(ImageResourcesAds.assetsPath_BannerRezo509_300x250),
             onTap: () {
-              MyLauncher.launchInBrowser(Constant.urlWebSiteRezo509);
+              AdsLinks.launchInBrowser(AdsLinks.urlWebSiteRezo509);
             },
           ));
     }
@@ -162,7 +159,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   void dispose() {
     super.dispose();
-    if (checkPlatform.isMobile) {
+    if (AdsPlatform.isMobile) {
       _bannerAd?.dispose();
     }
     _timer?.cancel();
@@ -171,7 +168,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   Widget build(BuildContext context) {
     //return Container(height: 0);
-    if ( CheckPlatform().isMobile ) {
+    if ( AdsPlatform.isMobile ) {
       return FutureBuilder<BannerAd>(
         future: bannerCompleter.future,
         builder: (BuildContext context, AsyncSnapshot<BannerAd> snapshot) {
@@ -204,7 +201,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if ( CheckPlatform().isMobile ) {
+    if ( AdsPlatform.isMobile ) {
       // Create the ad objects and load ads.
       _bannerAd = BannerAd(
           adUnitId: getBannerAdUnitId(),
@@ -238,7 +235,7 @@ bool isShowAds({required int index, int afterEveryItem=10, bool showAtZero=true}
     return true;
   }
   afterEveryItem = height>852?18:afterEveryItem;
-  return index>=afterEveryItem && index % afterEveryItem == 0 /*&& checkPlatform.isIOS*/;
+  return index>=afterEveryItem && index % afterEveryItem == 0 /*&& AdsPlatform.isIOS*/;
 }
 
 Widget getWidgetBanner() {

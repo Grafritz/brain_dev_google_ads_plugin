@@ -1,4 +1,4 @@
-import 'package:brain_dev_business/services/sender_google_ads_service.dart';
+import 'package:brain_dev_core/services/sender_google_ads_service.dart';
 import 'package:brain_dev_google_ads/admob/banner_ad_widget.dart';
 import 'package:brain_dev_google_ads/admob/widget_reward_view.dart';
 import 'package:brain_dev_google_ads/controllers/admob_controller.dart';
@@ -21,7 +21,7 @@ class SenderGoogleAdsServiceImpl implements SenderGoogleAdsService
       return true;
     }
     afterEveryItem = height>852?18:afterEveryItem;
-    return index>=afterEveryItem && index % afterEveryItem == 0 /*&& checkPlatform.isIOS*/;
+    return index>=afterEveryItem && index % afterEveryItem == 0 /*&& AdsPlatform.isIOS*/;
   }
 
   @override

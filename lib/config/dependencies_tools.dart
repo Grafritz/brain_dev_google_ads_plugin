@@ -1,5 +1,5 @@
 
-import 'package:brain_dev_business/services/sender_google_ads_service.dart';
+import 'package:brain_dev_core/services/sender_google_ads_service.dart';
 import 'package:brain_dev_google_ads/controllers/admob_controller.dart';
 import 'package:brain_dev_google_ads/impl_services/sender_google_ads_service_impl.dart';
 import 'package:get/get.dart';
